@@ -1,0 +1,7 @@
+*~
+*.swp
+*.pyc
+.project
+.pydevproject
+/gh-pages
+herp
