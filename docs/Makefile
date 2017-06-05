@@ -5,7 +5,7 @@
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
 PAPER         =
-BUILDDIR      = ../gh-pages/html
+BUILDDIR      = ./
 
 # Internal variables.
 PAPEROPT_a4     = -D latex_elements.papersize=a4
