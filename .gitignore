@@ -5,3 +5,6 @@
 .pydevproject
 /gh-pages
 herp
+build
+roteas.egg-info
+dist
