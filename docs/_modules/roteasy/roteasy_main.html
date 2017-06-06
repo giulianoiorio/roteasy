@@ -6,14 +6,14 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>roteasy.src.roteasy_lib &#8212; roteasy  documentation</title>
+    <title>roteasy.roteasy_main &#8212; roteasy  documentation</title>
     
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../../',
+        URL_ROOT:    '../../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -21,168 +21,37 @@
         SOURCELINK_SUFFIX: '.txt'
       };
     </script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-   
-  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
   </head>
   <body>
-  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">roteasy  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <h1>Source code for roteasy.src.roteasy_lib</h1><div class="highlight"><pre>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">cos</span><span class="p">,</span><span class="n">sin</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">asin</span>
+  <h1>Source code for roteasy.roteasy_main</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">.src.roteasy_lib</span> <span class="k">import</span> <span class="o">*</span>
 
-<span class="n">angle_to_rad</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.</span>
-<span class="n">rad_to_angle</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">angle_to_rad</span>
-
-<div class="viewcode-block" id="cartesian_to_spherical"><a class="viewcode-back" href="../../../roteasy.src.html#roteasy.src.roteasy_lib.cartesian_to_spherical">[docs]</a><span class="k">def</span> <span class="nf">cartesian_to_spherical</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
-    <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="n">pos</span>
-    <span class="n">d</span><span class="o">=</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="o">+</span><span class="n">z</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
-
-    <span class="n">l</span><span class="o">=</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">rad_to_angle</span>
-
-    <span class="n">b</span><span class="o">=</span><span class="n">asin</span><span class="p">(</span><span class="n">z</span><span class="o">/</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">rad_to_angle</span>
-
-    <span class="k">return</span> <span class="n">l</span><span class="p">,</span><span class="n">b</span></div>
-
-<div class="viewcode-block" id="cylindrical_to_spherical"><a class="viewcode-back" href="../../../roteasy.src.html#roteasy.src.roteasy_lib.cylindrical_to_spherical">[docs]</a><span class="k">def</span> <span class="nf">cylindrical_to_spherical</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
-
-    <span class="n">R</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">l</span><span class="o">=</span><span class="n">pos</span>
-
-    <span class="n">b</span> <span class="o">=</span> <span class="n">asin</span><span class="p">(</span><span class="n">z</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">R</span><span class="o">+</span><span class="n">z</span><span class="o">*</span><span class="n">z</span><span class="p">))</span><span class="o">*</span><span class="n">rad_to_angle</span>
-
-    <span class="k">return</span> <span class="n">l</span><span class="p">,</span><span class="n">b</span></div>
-
-<div class="viewcode-block" id="rotation_matrix_x"><a class="viewcode-back" href="../../../roteasy.src.html#roteasy.src.roteasy_lib.rotation_matrix_x">[docs]</a><span class="k">def</span> <span class="nf">rotation_matrix_x</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Calculate the matrix that defines the anticlockwise rotation of a point around the x axis:</span>
-
-<span class="sd">    .. math::</span>
-<span class="sd">        :nowrap:</span>
-
-<span class="sd">            \\begin{bmatrix}</span>
-<span class="sd">                1       &amp; 0 &amp;  0 \\\\</span>
-<span class="sd">                0       &amp; \\cos \\theta  &amp; \\sin \\theta  \\\\</span>
-<span class="sd">                0      &amp; -\\sin \\theta &amp; \\cos \\theta</span>
-<span class="sd">            \\end{bmatrix}</span>
-
-<span class="sd">    :param angle: (anticlockwise) rotation angle ( :math:`\\theta`) in degree</span>
-<span class="sd">    :return: a 3x3 numpy array containing the rotation matrix (see above).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">angle_rad</span><span class="o">=</span><span class="n">angle</span><span class="o">*</span><span class="n">angle_to_rad</span>
-
-    <span class="n">ca</span><span class="o">=</span><span class="n">cos</span><span class="p">(</span><span class="n">angle_rad</span><span class="p">)</span>
-    <span class="n">sa</span><span class="o">=</span><span class="n">sin</span><span class="p">(</span><span class="n">angle_rad</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">ca</span><span class="p">,</span> <span class="n">sa</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">sa</span><span class="p">,</span> <span class="n">ca</span><span class="p">]])</span></div>
-
-<div class="viewcode-block" id="rotation_matrix_y"><a class="viewcode-back" href="../../../roteasy.src.html#roteasy.src.roteasy_lib.rotation_matrix_y">[docs]</a><span class="k">def</span> <span class="nf">rotation_matrix_y</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Calculate the matrix that defines the anticlockwise rotation of a point around the y axis:</span>
-
-<span class="sd">    .. math::</span>
-<span class="sd">        :nowrap:</span>
-
-<span class="sd">            \\begin{bmatrix}</span>
-<span class="sd">                \\cos \\theta        &amp; 0 &amp;  -\\sin \\theta \\\\</span>
-<span class="sd">                0       &amp; 1  &amp; 0\\\\</span>
-<span class="sd">                \\sin \\theta      &amp; 0 &amp; \\cos \\theta</span>
-<span class="sd">            \\end{bmatrix}</span>
-
-<span class="sd">    :param angle: (anticlockwise) rotation angle ( :math:`\\theta`) in degree</span>
-<span class="sd">    :return: a 3x3 numpy array containing the rotation matrix (see above).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">angle_rad</span><span class="o">=</span><span class="n">angle</span><span class="o">*</span><span class="n">angle_to_rad</span>
-
-    <span class="n">cb</span><span class="o">=</span><span class="n">cos</span><span class="p">(</span><span class="n">angle_rad</span><span class="p">)</span>
-    <span class="n">sb</span><span class="o">=</span><span class="n">sin</span><span class="p">(</span><span class="n">angle_rad</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">cb</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">sb</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">sb</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cb</span><span class="p">]])</span></div>
-
-<div class="viewcode-block" id="rotation_matrix_z"><a class="viewcode-back" href="../../../roteasy.src.html#roteasy.src.roteasy_lib.rotation_matrix_z">[docs]</a><span class="k">def</span> <span class="nf">rotation_matrix_z</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Calculate the matrix that defines the anticlockwise rotation of a point around the z axis:</span>
-
-<span class="sd">    .. math::</span>
-<span class="sd">        :nowrap:</span>
-
-<span class="sd">            \\begin{bmatrix}</span>
-<span class="sd">                \\cos \\theta        &amp; \\sin \\theta &amp; 0 \\\\</span>
-<span class="sd">                -\\sin \\theta        &amp; \\cos \\theta  &amp; 0\\\\</span>
-<span class="sd">                0      &amp; 0 &amp; 1</span>
-<span class="sd">            \\end{bmatrix}</span>
-
-<span class="sd">    :param angle: (anticlockwise) rotation angle ( :math:`\\theta`) in degree</span>
-<span class="sd">    :return: a 3x3 numpy array containing the rotation matrix (see above).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">angle_rad</span><span class="o">=</span><span class="n">angle</span><span class="o">*</span><span class="n">angle_to_rad</span>
-
-    <span class="n">cg</span><span class="o">=</span><span class="n">cos</span><span class="p">(</span><span class="n">angle_rad</span><span class="p">)</span>
-    <span class="n">sg</span><span class="o">=</span><span class="n">sin</span><span class="p">(</span><span class="n">angle_rad</span><span class="p">)</span>
-
-    <span class="k">return</span>  <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">cg</span><span class="p">,</span><span class="n">sg</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="n">sg</span><span class="p">,</span><span class="n">cg</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span></div>
-
-<span class="n">dic_rot</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span><span class="n">rotation_matrix_x</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">:</span><span class="n">rotation_matrix_y</span><span class="p">,</span><span class="s">&#39;z&#39;</span><span class="p">:</span><span class="n">rotation_matrix_z</span><span class="p">}</span>
-
-<div class="viewcode-block" id="rotation_matrix"><a class="viewcode-back" href="../../../roteasy.src.html#roteasy.src.roteasy_lib.rotation_matrix">[docs]</a><span class="k">def</span> <span class="nf">rotation_matrix</span><span class="p">(</span><span class="n">angles</span><span class="o">=</span><span class="p">(),</span><span class="n">axes</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Core function to obtain the final rotation matrix :math:`R`.</span>
-
-<span class="sd">    .. math::</span>
-
-<span class="sd">        R(\\theta_1,\\theta_2,....,\\theta_N)=R_1(\\theta_1) \cdot R_2(\\theta_2) \cdot ..... \cdot R_N(\\theta_N)</span>
-
-
-<span class="sd">    where :math:`\\theta_i` is the anticlockwise rotation angle around the axis :math:`x_i`</span>
-<span class="sd">    e.g.::</span>
-
-<span class="sd">        angles=(30,60,80)</span>
-<span class="sd">        axes=&#39;xyz&#39;</span>
-
-<span class="sd">        R=rotation_matrix(angles=angles,axes=axes)</span>
-
-<span class="sd">    In this case R is the rotation matrix representing a rotation of 30 degree around the</span>
-<span class="sd">    x axis, then a rotation of 60 degree around the new y axis and finally a rotation of 80 degree</span>
-<span class="sd">    around the final z axis.</span>
-
-<span class="sd">    :param angles: (anticlockwise) rotation angles (list, tuple or numpy array).</span>
-<span class="sd">    :param axes: str representing the rotation axes.</span>
-<span class="sd">    :return: final rotation matrix (see above).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">nangles</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span>
-    <span class="n">naxes</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">axes</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="n">nangles</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">naxes</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Number of angles and/or rotation axes can not be 0 in rotation_matrix of module roteasy&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">nangles</span><span class="o">&gt;</span><span class="n">naxes</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;More angles than axes of rotation specified in rotation_matrix of module roteasy&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">naxes</span><span class="o">&gt;</span><span class="n">nangles</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s">&#39;Warning: More axes than angles, exceding axes skipped&#39;</span><span class="p">)</span>
-
-    <span class="n">R</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.</span><span class="p">]])</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nangles</span><span class="p">):</span>
-        <span class="n">angle</span><span class="o">=</span><span class="n">angles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">axis</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">rot_mat</span><span class="o">=</span><span class="n">dic_rot</span><span class="p">[</span><span class="n">axis</span><span class="p">](</span><span class="n">angle</span><span class="p">)</span>
-
-        <span class="n">R</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">rot_mat</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">R</span></div>
-
-<div class="viewcode-block" id="rotate"><a class="viewcode-back" href="../../../roteasy.src.html#roteasy.src.roteasy_lib.rotate">[docs]</a><span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">angles</span><span class="o">=</span><span class="p">(),</span><span class="n">axes</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="rotate"><a class="viewcode-back" href="../../roteasy.html#roteasy.roteasy_main.rotate">[docs]</a><span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">angles</span><span class="o">=</span><span class="p">(),</span><span class="n">axes</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Rotate the point with coordinate &#39;cord&#39; with an anticlokwise angle &#39;angles&#39; around the axes &#39;axes&#39;.</span>
 <span class="sd">    The function return the new rotated coordinates of the points.</span>
 
@@ -229,7 +98,7 @@
     <span class="k">if</span> <span class="n">unpack</span><span class="p">:</span> <span class="k">return</span> <span class="n">ret</span>
     <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span><span class="o">.</span><span class="n">T</span></div>
 
-<div class="viewcode-block" id="rotate_frame"><a class="viewcode-back" href="../../../roteasy.src.html#roteasy.src.roteasy_lib.rotate_frame">[docs]</a><span class="k">def</span> <span class="nf">rotate_frame</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">angles</span><span class="o">=</span><span class="p">(),</span><span class="n">axes</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="rotate_frame"><a class="viewcode-back" href="../../roteasy.html#roteasy.roteasy_main.rotate_frame">[docs]</a><span class="k">def</span> <span class="nf">rotate_frame</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">angles</span><span class="o">=</span><span class="p">(),</span><span class="n">axes</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Rotate the frame of reference with an anticlokwise angle &#39;angles&#39; around the axes &#39;axes&#39;.</span>
 <span class="sd">    The function return the coordinates of the points &#39;cord&#39; in the new frame of reference.</span>
@@ -252,7 +121,7 @@
 
     <span class="k">return</span>  <span class="n">rotate</span><span class="p">(</span><span class="n">cord</span><span class="o">=</span><span class="n">cord</span><span class="p">,</span><span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="n">unpacked</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="n">unpack</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="n">reference</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="n">xoff</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="n">yoff</span><span class="p">,</span><span class="n">zoff</span><span class="o">=</span><span class="n">zoff</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="align_frame"><a class="viewcode-back" href="../../../roteasy.src.html#roteasy.src.roteasy_lib.align_frame">[docs]</a><span class="k">def</span> <span class="nf">align_frame</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">pos_vec</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="n">cartesian</span><span class="o">=</span><span class="k">True</span><span class="p">,</span><span class="n">spherical</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">cylindrical</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="align_frame"><a class="viewcode-back" href="../../roteasy.html#roteasy.roteasy_main.align_frame">[docs]</a><span class="k">def</span> <span class="nf">align_frame</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">pos_vec</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="n">cartesian</span><span class="o">=</span><span class="k">True</span><span class="p">,</span><span class="n">spherical</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">cylindrical</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Rotate the frame of reference to align the axis specied in ax to the vector specied in pos_vec.</span>
 <span class="sd">    The function return the position of the particles with cord &#39;cord&#39; in the new frame of reference.</span>
@@ -302,7 +171,7 @@
 
     <span class="k">return</span> <span class="n">rotate_frame</span><span class="p">(</span><span class="n">cord</span><span class="o">=</span><span class="n">cord</span><span class="p">,</span><span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="n">unpacked</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="n">unpack</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="n">reference</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="n">xoff</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="n">yoff</span><span class="p">,</span><span class="n">zoff</span><span class="o">=</span><span class="n">zoff</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="rotate2D"><a class="viewcode-back" href="../../../roteasy.src.html#roteasy.src.roteasy_lib.rotate2D">[docs]</a><span class="k">def</span> <span class="nf">rotate2D</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">angle</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="rotate2D"><a class="viewcode-back" href="../../roteasy.html#roteasy.roteasy_main.rotate2D">[docs]</a><span class="k">def</span> <span class="nf">rotate2D</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">angle</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Rotate a point in a X-Y frame of reference. The rotation is around the Z axis.</span>
 <span class="sd">    :param cord: np.array (Nx2) or list with (x,y)</span>
@@ -330,7 +199,7 @@
     <span class="k">if</span> <span class="n">unpack</span><span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="n">yn</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">xn</span><span class="p">,</span><span class="n">yn</span><span class="p">))</span><span class="o">.</span><span class="n">T</span></div>
 
-<div class="viewcode-block" id="rotate_frame2D"><a class="viewcode-back" href="../../../roteasy.src.html#roteasy.src.roteasy_lib.rotate_frame2D">[docs]</a><span class="k">def</span> <span class="nf">rotate_frame2D</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">angle</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="rotate_frame2D"><a class="viewcode-back" href="../../roteasy.html#roteasy.roteasy_main.rotate_frame2D">[docs]</a><span class="k">def</span> <span class="nf">rotate_frame2D</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">angle</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Rotate  a X-Y frame of reference. The rotation is around the Z axis.</span>
 <span class="sd">    The function return the coordinates of the points &#39;cord&#39; in the new frame of reference.</span>
@@ -346,7 +215,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">rotate2D</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="o">-</span><span class="n">angle</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="n">unpacked</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="n">unpack</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="n">reference</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="n">xoff</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="n">yoff</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="align_frame2D"><a class="viewcode-back" href="../../../roteasy.src.html#roteasy.src.roteasy_lib.align_frame2D">[docs]</a><span class="k">def</span> <span class="nf">align_frame2D</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">pos_vec</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="n">cartesian</span><span class="o">=</span><span class="k">True</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="align_frame2D"><a class="viewcode-back" href="../../roteasy.html#roteasy.roteasy_main.align_frame2D">[docs]</a><span class="k">def</span> <span class="nf">align_frame2D</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">pos_vec</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="n">cartesian</span><span class="o">=</span><span class="k">True</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Rotate a 2D X-Y frame of reference to align the axis specied in ax to the vector specied in pos_vec.</span>
 <span class="sd">    The function return the position of the particles with cord &#39;cord&#39; in the new frame of reference.</span>
@@ -376,7 +245,7 @@
 
     <span class="k">return</span>  <span class="n">rotate_frame2D</span><span class="p">(</span><span class="n">cord</span><span class="o">=</span><span class="n">cord</span><span class="p">,</span><span class="n">angle</span><span class="o">=</span><span class="n">angle</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="n">unpacked</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="n">unpack</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="n">reference</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="n">xoff</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="n">yoff</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="rotate_euler"><a class="viewcode-back" href="../../../roteasy.src.html#roteasy.src.roteasy_lib.rotate_euler">[docs]</a><span class="k">def</span> <span class="nf">rotate_euler</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">beta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="s">&#39;zxz&#39;</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="rotate_euler"><a class="viewcode-back" href="../../roteasy.html#roteasy.roteasy_main.rotate_euler">[docs]</a><span class="k">def</span> <span class="nf">rotate_euler</span><span class="p">(</span><span class="n">cord</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">beta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="s">&#39;zxz&#39;</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zoff</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Rotate the frame of reference using the Euler convention: a first rotation of alpha round the original axes[0], then</span>
 <span class="sd">    a rotation of angle beta around the new axes[1] and finally a rotation of gamma around the final axis axes[2].</span>
@@ -396,99 +265,6 @@
     <span class="n">angles</span><span class="o">=</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="n">beta</span><span class="p">,</span><span class="n">gamma</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">rotate_frame</span><span class="p">(</span><span class="n">cord</span><span class="o">=</span><span class="n">cord</span><span class="p">,</span><span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span><span class="n">unpack</span><span class="o">=</span><span class="n">unpack</span><span class="p">,</span><span class="n">unpacked</span><span class="o">=</span><span class="n">unpacked</span><span class="p">,</span><span class="n">reference</span><span class="o">=</span><span class="n">reference</span><span class="p">,</span><span class="n">xoff</span><span class="o">=</span><span class="n">xoff</span><span class="p">,</span><span class="n">yoff</span><span class="o">=</span><span class="n">yoff</span><span class="p">,</span><span class="n">zoff</span><span class="o">=</span><span class="n">zoff</span><span class="p">)</span></div>
-
-
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">#TEST</span>
-<span class="sd">#row convention, the following functions perform the same rotation but following</span>
-<span class="sd">#the row convention (x,y,z).T= R (x.y,z).T NB both the singl matrix and the order of the multiplicaiton change</span>
-<span class="sd">#They are not used!</span>
-
-<span class="sd">def rotation_matrix_x(angle):</span>
-
-<span class="sd">    angle_rad=angle*angle_to_rad</span>
-
-<span class="sd">    ca=cos(angle_rad)</span>
-<span class="sd">    sa=sin(angle_rad)</span>
-
-<span class="sd">    return np.array([[1, 0, 0], [0, ca, -sa], [0, sa, ca]])</span>
-
-<span class="sd">def rotation_matrix_y(angle):</span>
-
-<span class="sd">    angle_rad=angle*angle_to_rad</span>
-
-<span class="sd">    cb=cos(angle_rad)</span>
-<span class="sd">    sb=sin(angle_rad)</span>
-
-<span class="sd">    return np.array([[cb, 0, sb], [0, 1, 0], [-sb, 0, cb]])</span>
-
-<span class="sd">def rotation_matrix_z(angle):</span>
-
-<span class="sd">    angle_rad=angle*angle_to_rad</span>
-
-<span class="sd">    cg=cos(angle_rad)</span>
-<span class="sd">    sg=sin(angle_rad)</span>
-
-<span class="sd">    return  np.array([[cg,-sg,0],[sg,cg,0],[0,0,1]])</span>
-
-<span class="sd">dic_rot={&#39;x&#39;:rotation_matrix_x,&#39;y&#39;:rotation_matrix_y,&#39;z&#39;:rotation_matrix_z}</span>
-
-<span class="sd">def rotation_matrix(angles=(),axes=&#39;&#39;):</span>
-
-
-<span class="sd">    nangles=len(angles)</span>
-<span class="sd">    naxes=len(axes)</span>
-
-<span class="sd">    if (nangles==0) or (naxes==0): raise ValueError(&#39;Number of angles and/or rotation axes can not be 0 in rotation_matrix of module roteasy&#39;)</span>
-<span class="sd">    elif nangles&gt;naxes: raise ValueError(&#39;More angles than axes of rotation specified in rotation_matrix of module roteasy&#39;)</span>
-<span class="sd">    elif naxes&gt;nangles: print(&#39;Warning: More axes than angles, exceding axes skipped&#39;)</span>
-
-<span class="sd">    R=np.array([[1.,0,0],[0,1.,0],[0,0,1.]])</span>
-
-<span class="sd">    for i in range(nangles-1,-1,-1):</span>
-<span class="sd">        angle=angles[i]</span>
-<span class="sd">        axis=axes[i]</span>
-<span class="sd">        rot_mat=dic_rot[axis](angle)</span>
-
-<span class="sd">        R=np.dot(rot_mat,R)</span>
-
-<span class="sd">    return R</span>
-
-<span class="sd">def rotate(cord,angles=(),axes=&#39;&#39;,unpacked=False,unpack=False,reference=&#39;r&#39;,xoff=0,yoff=0,zoff=0):</span>
-
-
-<span class="sd">    if reference[0].lower()== &#39;r&#39;: cost2 = 1</span>
-<span class="sd">    elif reference[0].lower()== &#39;l&#39;:cost2 = -1</span>
-<span class="sd">    else: raise ValueError(&#39;Wrong frame formalism&#39;)</span>
-
-
-
-<span class="sd">    angles=np.array(angles)*cost2</span>
-
-
-<span class="sd">    cord=np.array(cord)</span>
-
-<span class="sd">    if unpacked: xo, yo, zo = cord</span>
-<span class="sd">    else: xo,yo,zo = cord.T</span>
-
-
-
-<span class="sd">    R=rotation_matrix(angles=angles,axes=axes)</span>
-
-
-
-<span class="sd">    xn = R[0,0]*xo + R[0,1]*yo + R[0,2]*zo - xoff</span>
-<span class="sd">    yn = R[1,0]*xo + R[1,1]*yo + R[1,2]*zo - yoff</span>
-<span class="sd">    zn = R[2,0]*xo + R[2,1]*yo + R[2,2]*zo - zoff</span>
-
-
-
-<span class="sd">    ret = (xn,yn,zn)</span>
-
-<span class="sd">    if unpack: return ret</span>
-<span class="sd">    else: return np.array(ret).T</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
 </pre></div>
 
           </div>
@@ -496,33 +272,9 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../../../index.html">roteasy</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../roteasy.html">roteasy package</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../../../index.html">Documentation overview</a><ul>
-  <li><a href="../../index.html">Module code</a><ul>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <form class="search" action="../../../search.html" method="get">
+    <form class="search" action="../../search.html" method="get">
       <div><input type="text" name="q" /></div>
       <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
@@ -534,17 +286,22 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2017, Giuliano Iorio.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7+</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">roteasy  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Giuliano Iorio.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7+.
+    </div>
   </body>
 </html>

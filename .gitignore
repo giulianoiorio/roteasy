@@ -3,6 +3,7 @@
 *.pyc
 .project
 .pydevproject
+aux
 /gh-pages
 herp
 build

@@ -1,17 +1,21 @@
 roteasy package
 ===============
 
-Subpackages
------------
+bla bla ciao ciao
 
-.. toctree::
+:mod:`main` Module
+-------------------------
 
-    roteasy.src
-
-Module contents
----------------
-
-.. automodule:: roteasy
+.. automodule:: roteasy.roteasy_main
     :members:
     :undoc-members:
     :show-inheritance:
+
+:mod:`lib` Module
+-------------------------
+
+.. automodule:: roteasy.src.roteasy_lib
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
