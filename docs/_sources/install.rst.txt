@@ -1,0 +1,15 @@
+.. _install:
+
+Installation
+============
+
+
+Using pip
+---------
+
+The easiest way to install the most recent stable version of ``corner`` is
+with `pip <http://www.pip-installer.org/>`_:
+
+.. code-block:: bash
+
+pip install roteas

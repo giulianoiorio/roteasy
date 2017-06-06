@@ -1,5 +1,6 @@
 from .src.roteasy_lib import *
 
+
 def rotate(cord,angles=(),axes='',unpacked=False,unpack=False,reference='r',xoff=0,yoff=0,zoff=0):
     """Rotate the point with coordinate 'cord' with an anticlokwise angle 'angles' around the axes 'axes'.
     The function return the new rotated coordinates of the points.
@@ -16,41 +17,13 @@ def rotate(cord,angles=(),axes='',unpacked=False,unpack=False,reference='r',xoff
     :return:
     """
 
-    if reference[0].lower()== 'r': cost2 = 1
-    elif reference[0].lower()== 'l':cost2 = -1
-    else: raise ValueError('Wrong frame formalism')
 
+    return rotate_core(cord=cord,angles=angles,axes=axes,unpacked=unpacked,unpack=unpack,reference=reference,xoff=xoff,yoff=yoff,zoff=zoff,change_reference=False)
 
-
-    angles=np.array(angles)*cost2
-
-
-    cord=np.array(cord)
-
-    if unpacked: xo, yo, zo = cord
-    else: xo,yo,zo = cord.T
-
-
-
-    R=rotation_matrix(angles=angles,axes=axes)
-
-
-
-    xn = R[0,0]*xo + R[1,0]*yo + R[2,0]*zo - xoff
-    yn = R[0,1]*xo + R[1,1]*yo + R[2,1]*zo - yoff
-    zn = R[0,2]*xo + R[1,2]*yo + R[2,2]*zo - zoff
-
-
-
-    ret = (xn,yn,zn)
-
-    if unpack: return ret
-    else: return np.array(ret).T
-
-def rotate_frame(cord,angles=(),axes='',unpacked=False,unpack=False,reference='r',xoff=0,yoff=0,zoff=0):
-    """
-    Rotate the frame of reference with an anticlokwise angle 'angles' around the axes 'axes'.
+def rotate_frame(cord,angles=(),axes='',unpacked=False,unpack=False,reference='r',xoff=0,yoff=0,zoff=0,change_reference=False):
+    """Rotate the frame of reference with an anticlokwise angle 'angles' around the axes 'axes'.
     The function return the coordinates of the points 'cord' in the new frame of reference.
+
     The frame is rotated with angles[0] around the axes[0], then it is rotated of the angles[1] around the new axes axes[1] and so on...
     :param cord: np.array (Nx3) or list with (x,y,z)
     :param angles: List of (anticlockwise) angle of rotation.
@@ -61,6 +34,7 @@ def rotate_frame(cord,angles=(),axes='',unpacked=False,unpack=False,reference='r
     :param xoff: X-offset after the rotation
     :param yoff: Y-offset after the rotation
     :param zoff: Z-offset after the rotation
+    :param change_reference: If 'x' 'y' or 'z' change the final frame of reference (after all the rotations) to the convention opposite to the one indicating in reference. If '' or False, nothing change.
     :return:
     """
 
@@ -68,12 +42,12 @@ def rotate_frame(cord,angles=(),axes='',unpacked=False,unpack=False,reference='r
     angles=-1*np.array(angles)
 
 
-    return  rotate(cord=cord,angles=angles,axes=axes,unpacked=unpacked,unpack=unpack,reference=reference,xoff=xoff,yoff=yoff,zoff=zoff)
+    return rotate_core(cord=cord,angles=angles,axes=axes,unpacked=unpacked,unpack=unpack,reference=reference,xoff=xoff,yoff=yoff,zoff=zoff,change_reference=change_reference)
 
-def align_frame(cord,pos_vec,ax='x',cartesian=True,spherical=False,cylindrical=False,unpacked=False,unpack=False,reference='r',xoff=0,yoff=0,zoff=0):
-    """
-    Rotate the frame of reference to align the axis specied in ax to the vector specied in pos_vec.
+def align_frame(cord,pos_vec,ax='x',cartesian=True,spherical=False,cylindrical=False,unpacked=False,unpack=False,reference='r',xoff=0,yoff=0,zoff=0,change_reference=False):
+    """Rotate the frame of reference to align the axis specied in ax to the vector specied in pos_vec.
     The function return the position of the particles with cord 'cord' in the new frame of reference.
+
     :param cord: np.array (Nx3) or list with (x,y,z)
     :param pos_vec:  Vector containing the coordinate of the reference vector (see below)
     :param ax: ax to align to Vector
@@ -83,6 +57,7 @@ def align_frame(cord,pos_vec,ax='x',cartesian=True,spherical=False,cylindrical=F
     :param xoff: X-offset after the rotation
     :param yoff: Y-offset after the rotation
     :param zoff: Z-offset after the rotation
+    :param change_reference: If 'x' 'y' or 'z' change the final frame of reference (after all the rotations) to the convention opposite to the one indicating in reference. If '' or False, nothing change.
     :return:
     """
 
@@ -118,11 +93,11 @@ def align_frame(cord,pos_vec,ax='x',cartesian=True,spherical=False,cylindrical=F
 
 
 
-    return rotate_frame(cord=cord,angles=angles,axes=axes,unpacked=unpacked,unpack=unpack,reference=reference,xoff=xoff,yoff=yoff,zoff=zoff)
+    return rotate_frame(cord=cord,angles=angles,axes=axes,unpacked=unpacked,unpack=unpack,reference=reference,xoff=xoff,yoff=yoff,zoff=zoff,change_reference=change_reference)
 
 def rotate2D(cord,angle,unpacked=False,unpack=False,reference='r',xoff=0,yoff=0):
-    """
-    Rotate a point in a X-Y frame of reference. The rotation is around the Z axis.
+    """Rotate a point in a X-Y frame of reference. The rotation is around the Z axis.
+
     :param cord: np.array (Nx2) or list with (x,y)
     :param angles: (anticlockwise) angle of rotation.
     :param unpacked: If True, coord are on the form (x,y), if False cord are a Nx3 array with x in the 0-col, y 1-col
@@ -130,7 +105,6 @@ def rotate2D(cord,angle,unpacked=False,unpack=False,reference='r',xoff=0,yoff=0)
     :param reference: rh if the system is right-handed, lh if the system is left-handed.
     :param xoff: X-offset after the rotation
     :param yoff: Y-offset after the rotation
-    :param zoff: Z-offset after the rotation
     :return:
     """
     angles=(angle,)
@@ -148,10 +122,10 @@ def rotate2D(cord,angle,unpacked=False,unpack=False,reference='r',xoff=0,yoff=0)
     if unpack: return (xn,yn)
     else: return np.array((xn,yn)).T
 
-def rotate_frame2D(cord,angle,unpacked=False,unpack=False,reference='r',xoff=0,yoff=0):
-    """
-    Rotate  a X-Y frame of reference. The rotation is around the Z axis.
+def rotate_frame2D(cord,angle,unpacked=False,unpack=False,reference='r',xoff=0,yoff=0,change_reference=False):
+    """Rotate  a X-Y frame of reference. The rotation is around the Z axis.
     The function return the coordinates of the points 'cord' in the new frame of reference.
+
     :param cord: np.array (Nx2) or list with (x,y)
     :param angles: (anticlockwise) angle of rotation.
     :param unpacked: If True, coord are on the form (x,y), if False cord are a Nx3 array with x in the 0-col, y 1-col
@@ -159,15 +133,29 @@ def rotate_frame2D(cord,angle,unpacked=False,unpack=False,reference='r',xoff=0,y
     :param reference: rh if the system is right-handed, lh if the system is left-handed.
     :param xoff: X-offset after the rotation
     :param yoff: Y-offset after the rotation
-    :param zoff: Z-offset after the rotation
+    :param change_reference: If 'x' 'y' or 'z' change the final frame of reference (after all the rotations) to the convention opposite to the one indicating in reference. If '' or False, nothing change.
     :return:
     """
-    return rotate2D(cord,-angle,unpacked=unpacked,unpack=unpack,reference=reference,xoff=xoff,yoff=yoff)
 
-def align_frame2D(cord,pos_vec,ax='x',cartesian=True, polar=False,unpacked=False,unpack=False,reference='r',xoff=0,yoff=0,zoff=0):
-    """
-    Rotate a 2D X-Y frame of reference to align the axis specied in ax to the vector specied in pos_vec.
+    angles=(angle,)
+    ax='z'
+    zoff=0
+
+
+    if unpacked: xo, yo = cord
+    else: xo,yo = cord.T
+
+    zo=np.zeros_like(xo,dtype=float)
+
+    xn,yn,_=rotate(cord=(xo,yo,zo),angles=angles,axes=ax,unpacked=True,unpack=True,reference=reference,xoff=xoff,yoff=yoff,zoff=zoff,change_reference=change_reference)
+
+    if unpack: return (xn,yn)
+    else: return np.array((xn,yn)).T
+
+def align_frame2D(cord,pos_vec,ax='x',cartesian=True, polar=False,unpacked=False,unpack=False,reference='r',xoff=0,yoff=0,change_reference=False):
+    """Rotate a 2D X-Y frame of reference to align the axis specied in ax to the vector specied in pos_vec.
     The function return the position of the particles with cord 'cord' in the new frame of reference.
+
     :param cord: np.array (Nx2) or list with (x,y)
     :param pos_vec:  Vector containing the coordinate of the reference vector (see below)
     :param ax: ax to align to Vector (x, or y)
@@ -175,6 +163,7 @@ def align_frame2D(cord,pos_vec,ax='x',cartesian=True, polar=False,unpacked=False
     :param polar: the aximuthal angle in degree
     :param xoff: X-offset after the rotation
     :param yoff: Y-offset after the rotation
+    :param change_reference: If 'x' 'y' or 'z' change the final frame of reference (after all the rotations) to the convention opposite to the one indicating in reference. If '' or False, nothing change.
     :return:
     """
 
@@ -192,7 +181,7 @@ def align_frame2D(cord,pos_vec,ax='x',cartesian=True, polar=False,unpacked=False
     elif ax=='-y': angle=(270+angle+180)*cost2
     else: raise ValueError('ax %s unknown'%ax)
 
-    return  rotate_frame2D(cord=cord,angle=angle,unpacked=unpacked,unpack=unpack,reference=reference,xoff=xoff,yoff=yoff)
+    return  rotate_frame2D(cord=cord,angle=angle,unpacked=unpacked,unpack=unpack,reference=reference,xoff=xoff,yoff=yoff,change_reference=change_reference)
 
 def rotate_euler(cord,alpha=0,beta=0,gamma=0,axes='zxz',unpacked=False,unpack=False,reference='r',xoff=0,yoff=0,zoff=0):
     """
@@ -214,3 +203,8 @@ def rotate_euler(cord,alpha=0,beta=0,gamma=0,axes='zxz',unpacked=False,unpack=Fa
     angles=(alpha,beta,gamma)
 
     return rotate_frame(cord=cord,angles=angles,axes=axes,unpack=unpack,unpacked=unpacked,reference=reference,xoff=xoff,yoff=yoff,zoff=zoff)
+
+
+
+
+

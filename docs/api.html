@@ -1,0 +1,558 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>roteasy package &mdash; roteasy  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="roteasy  documentation" href="index.html"/>
+        <link rel="prev" title="Example" href="example.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> roteasy
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">roteasy package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-roteasy.roteasy_main"><code class="docutils literal"><span class="pre">main</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-roteasy.src.roteasy_lib"><code class="docutils literal"><span class="pre">lib</span></code> Module</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">roteasy</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>roteasy package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="roteasy-package">
+<h1>roteasy package<a class="headerlink" href="#roteasy-package" title="Permalink to this headline">¶</a></h1>
+<p>bla bla ciao ciao</p>
+<div class="section" id="module-roteasy.roteasy_main">
+<span id="main-module"></span><h2><code class="xref py py-mod docutils literal"><span class="pre">main</span></code> Module<a class="headerlink" href="#module-roteasy.roteasy_main" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="roteasy.roteasy_main.align_frame">
+<code class="descclassname">roteasy.roteasy_main.</code><code class="descname">align_frame</code><span class="sig-paren">(</span><em>cord</em>, <em>pos_vec</em>, <em>ax=’x’</em>, <em>cartesian=True</em>, <em>spherical=False</em>, <em>cylindrical=False</em>, <em>unpacked=False</em>, <em>unpack=False</em>, <em>reference=’r’</em>, <em>xoff=0</em>, <em>yoff=0</em>, <em>zoff=0</em>, <em>change_reference=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/roteasy_main.html#align_frame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.roteasy_main.align_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate the frame of reference to align the axis specied in ax to the vector specied in pos_vec.
+The function return the position of the particles with cord ‘cord’ in the new frame of reference.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cord</strong> – np.array (Nx3) or list with (x,y,z)</li>
+<li><strong>pos_vec</strong> – Vector containing the coordinate of the reference vector (see below)</li>
+<li><strong>ax</strong> – ax to align to Vector</li>
+<li><strong>cartesian</strong> – the coordinates of pos_vec are cartesian (x,y,z)</li>
+<li><strong>spherical</strong> – the coordinates of pos_vec are spherical  (phi (azimuth), theta(declination)) in degree</li>
+<li><strong>cylindrical</strong> – the coordinates of pos_vec are</li>
+<li><strong>xoff</strong> – X-offset after the rotation</li>
+<li><strong>yoff</strong> – Y-offset after the rotation</li>
+<li><strong>zoff</strong> – Z-offset after the rotation</li>
+<li><strong>change_reference</strong> – If ‘x’ ‘y’ or ‘z’ change the final frame of reference (after all the rotations) to the convention opposite to the one indicating in reference. If ‘’ or False, nothing change.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="roteasy.roteasy_main.align_frame2D">
+<code class="descclassname">roteasy.roteasy_main.</code><code class="descname">align_frame2D</code><span class="sig-paren">(</span><em>cord</em>, <em>pos_vec</em>, <em>ax=’x’</em>, <em>cartesian=True</em>, <em>polar=False</em>, <em>unpacked=False</em>, <em>unpack=False</em>, <em>reference=’r’</em>, <em>xoff=0</em>, <em>yoff=0</em>, <em>change_reference=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/roteasy_main.html#align_frame2D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.roteasy_main.align_frame2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate a 2D X-Y frame of reference to align the axis specied in ax to the vector specied in pos_vec.
+The function return the position of the particles with cord ‘cord’ in the new frame of reference.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cord</strong> – np.array (Nx2) or list with (x,y)</li>
+<li><strong>pos_vec</strong> – Vector containing the coordinate of the reference vector (see below)</li>
+<li><strong>ax</strong> – ax to align to Vector (x, or y)</li>
+<li><strong>cartesian</strong> – the coordinates of pos_vec are cartesian (x,y)</li>
+<li><strong>polar</strong> – the aximuthal angle in degree</li>
+<li><strong>xoff</strong> – X-offset after the rotation</li>
+<li><strong>yoff</strong> – Y-offset after the rotation</li>
+<li><strong>change_reference</strong> – If ‘x’ ‘y’ or ‘z’ change the final frame of reference (after all the rotations) to the convention opposite to the one indicating in reference. If ‘’ or False, nothing change.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="roteasy.roteasy_main.rotate">
+<code class="descclassname">roteasy.roteasy_main.</code><code class="descname">rotate</code><span class="sig-paren">(</span><em>cord</em>, <em>angles=()</em>, <em>axes=’‘</em>, <em>unpacked=False</em>, <em>unpack=False</em>, <em>reference=’r’</em>, <em>xoff=0</em>, <em>yoff=0</em>, <em>zoff=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/roteasy_main.html#rotate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.roteasy_main.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate the point with coordinate ‘cord’ with an anticlokwise angle ‘angles’ around the axes ‘axes’.
+The function return the new rotated coordinates of the points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cord</strong> – np.array (Nx3) or list with (x,y,z)</li>
+<li><strong>angles</strong> – List of (anticlockwise) angle of rotation.</li>
+<li><strong>axes</strong> – List of axes of rotation.</li>
+<li><strong>unpacked</strong> – If True, coord are on the form (x,y,z), if False cord are a Nx3 array with x in the 0-col, y 1-col and z 2-col</li>
+<li><strong>unpack</strong> – If True return the new cord in the form (xn,yn,zn), if False return the coord in a Nx3 array with x in the 0-col, y 1-col and z 2-col</li>
+<li><strong>reference</strong> – rh if the system is right-handed, lh if the system is left-handed.</li>
+<li><strong>xoff</strong> – X-offset after the rotation</li>
+<li><strong>yoff</strong> – Y-offset after the rotation</li>
+<li><strong>zoff</strong> – Z-offset after the rotation</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="roteasy.roteasy_main.rotate2D">
+<code class="descclassname">roteasy.roteasy_main.</code><code class="descname">rotate2D</code><span class="sig-paren">(</span><em>cord</em>, <em>angle</em>, <em>unpacked=False</em>, <em>unpack=False</em>, <em>reference=’r’</em>, <em>xoff=0</em>, <em>yoff=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/roteasy_main.html#rotate2D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.roteasy_main.rotate2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate a point in a X-Y frame of reference. The rotation is around the Z axis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cord</strong> – np.array (Nx2) or list with (x,y)</li>
+<li><strong>angles</strong> – (anticlockwise) angle of rotation.</li>
+<li><strong>unpacked</strong> – If True, coord are on the form (x,y), if False cord are a Nx3 array with x in the 0-col, y 1-col</li>
+<li><strong>unpack</strong> – If True return the new cord in the form (xn,yn), if False return the coord in a Nx2 array with x in the 0-col, y 1-col</li>
+<li><strong>reference</strong> – rh if the system is right-handed, lh if the system is left-handed.</li>
+<li><strong>xoff</strong> – X-offset after the rotation</li>
+<li><strong>yoff</strong> – Y-offset after the rotation</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="roteasy.roteasy_main.rotate_euler">
+<code class="descclassname">roteasy.roteasy_main.</code><code class="descname">rotate_euler</code><span class="sig-paren">(</span><em>cord</em>, <em>alpha=0</em>, <em>beta=0</em>, <em>gamma=0</em>, <em>axes=’zxz’</em>, <em>unpacked=False</em>, <em>unpack=False</em>, <em>reference=’r’</em>, <em>xoff=0</em>, <em>yoff=0</em>, <em>zoff=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/roteasy_main.html#rotate_euler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.roteasy_main.rotate_euler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate the frame of reference using the Euler convention: a first rotation of alpha round the original axes[0], then
+a rotation of angle beta around the new axes[1] and finally a rotation of gamma around the final axis axes[2].
+:param cord: np.array (Nx3) or list with (x,y,z)
+:param alpha: The first anticlokwise rotation angle
+:param beta: The second anticlokwise rotation angle
+:param gamma: The third anticlokwise rotation angle
+:param axes: axes of rotation
+:param unpacked: If True, coord are on the form (x,y,z), if False cord are a Nx3 array with x in the 0-col, y 1-col and z 2-col
+:param unpack: If True return the new cord in the form (xn,yn,zn), if False return the coord in a Nx3 array with x in the 0-col, y 1-col and z 2-col
+:param reference: rh if the system is right-handed, lh if the system is left-handed.
+:param xoff: X-offset after the rotation
+:param yoff: Y-offset after the rotation
+:param zoff: Z-offset after the rotation
+:return:</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="roteasy.roteasy_main.rotate_frame">
+<code class="descclassname">roteasy.roteasy_main.</code><code class="descname">rotate_frame</code><span class="sig-paren">(</span><em>cord</em>, <em>angles=()</em>, <em>axes=’‘</em>, <em>unpacked=False</em>, <em>unpack=False</em>, <em>reference=’r’</em>, <em>xoff=0</em>, <em>yoff=0</em>, <em>zoff=0</em>, <em>change_reference=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/roteasy_main.html#rotate_frame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.roteasy_main.rotate_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate the frame of reference with an anticlokwise angle ‘angles’ around the axes ‘axes’.
+The function return the coordinates of the points ‘cord’ in the new frame of reference.</p>
+<p>The frame is rotated with angles[0] around the axes[0], then it is rotated of the angles[1] around the new axes axes[1] and so on…
+:param cord: np.array (Nx3) or list with (x,y,z)
+:param angles: List of (anticlockwise) angle of rotation.
+:param axes: List of axes of rotation.
+:param unpacked: If True, coord are on the form (x,y,z), if False cord are a Nx3 array with x in the 0-col, y 1-col and z 2-col
+:param unpack: If True return the new cord in the form (xn,yn,zn), if False return the coord in a Nx3 array with x in the 0-col, y 1-col and z 2-col
+:param reference: rh if the system is right-handed, lh if the system is left-handed.
+:param xoff: X-offset after the rotation
+:param yoff: Y-offset after the rotation
+:param zoff: Z-offset after the rotation
+:param change_reference: If ‘x’ ‘y’ or ‘z’ change the final frame of reference (after all the rotations) to the convention opposite to the one indicating in reference. If ‘’ or False, nothing change.
+:return:</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="roteasy.roteasy_main.rotate_frame2D">
+<code class="descclassname">roteasy.roteasy_main.</code><code class="descname">rotate_frame2D</code><span class="sig-paren">(</span><em>cord</em>, <em>angle</em>, <em>unpacked=False</em>, <em>unpack=False</em>, <em>reference=’r’</em>, <em>xoff=0</em>, <em>yoff=0</em>, <em>change_reference=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/roteasy_main.html#rotate_frame2D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.roteasy_main.rotate_frame2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate  a X-Y frame of reference. The rotation is around the Z axis.
+The function return the coordinates of the points ‘cord’ in the new frame of reference.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cord</strong> – np.array (Nx2) or list with (x,y)</li>
+<li><strong>angles</strong> – (anticlockwise) angle of rotation.</li>
+<li><strong>unpacked</strong> – If True, coord are on the form (x,y), if False cord are a Nx3 array with x in the 0-col, y 1-col</li>
+<li><strong>unpack</strong> – If True return the new cord in the form (xn,yn), if False return the coord in a Nx2 array with x in the 0-col, y 1-col</li>
+<li><strong>reference</strong> – rh if the system is right-handed, lh if the system is left-handed.</li>
+<li><strong>xoff</strong> – X-offset after the rotation</li>
+<li><strong>yoff</strong> – Y-offset after the rotation</li>
+<li><strong>change_reference</strong> – If ‘x’ ‘y’ or ‘z’ change the final frame of reference (after all the rotations) to the convention opposite to the one indicating in reference. If ‘’ or False, nothing change.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-roteasy.src.roteasy_lib">
+<span id="lib-module"></span><h2><code class="xref py py-mod docutils literal"><span class="pre">lib</span></code> Module<a class="headerlink" href="#module-roteasy.src.roteasy_lib" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="roteasy.src.roteasy_lib.cartesian_to_spherical">
+<code class="descclassname">roteasy.src.roteasy_lib.</code><code class="descname">cartesian_to_spherical</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/src/roteasy_lib.html#cartesian_to_spherical"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.src.roteasy_lib.cartesian_to_spherical" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="roteasy.src.roteasy_lib.cylindrical_to_spherical">
+<code class="descclassname">roteasy.src.roteasy_lib.</code><code class="descname">cylindrical_to_spherical</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/src/roteasy_lib.html#cylindrical_to_spherical"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.src.roteasy_lib.cylindrical_to_spherical" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="roteasy.src.roteasy_lib.rotate_core">
+<code class="descclassname">roteasy.src.roteasy_lib.</code><code class="descname">rotate_core</code><span class="sig-paren">(</span><em>cord</em>, <em>angles=()</em>, <em>axes=’‘</em>, <em>unpacked=False</em>, <em>unpack=False</em>, <em>reference=’r’</em>, <em>xoff=0</em>, <em>yoff=0</em>, <em>zoff=0</em>, <em>change_reference=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/src/roteasy_lib.html#rotate_core"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.src.roteasy_lib.rotate_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate the point with coordinate ‘cord’ with an anticlokwise angle ‘angles’ around the axes ‘axes’.
+The function return the new rotated coordinates of the points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cord</strong> – np.array (Nx3) or list with (x,y,z)</li>
+<li><strong>angles</strong> – List of (anticlockwise) angle of rotation.</li>
+<li><strong>axes</strong> – List of axes of rotation.</li>
+<li><strong>unpacked</strong> – If True, coord are on the form (x,y,z), if False cord are a Nx3 array with x in the 0-col, y 1-col and z 2-col</li>
+<li><strong>unpack</strong> – If True return the new cord in the form (xn,yn,zn), if False return the coord in a Nx3 array with x in the 0-col, y 1-col and z 2-col</li>
+<li><strong>reference</strong> – rh if the system is right-handed, lh if the system is left-handed.</li>
+<li><strong>xoff</strong> – X-offset after the rotation</li>
+<li><strong>yoff</strong> – Y-offset after the rotation</li>
+<li><strong>zoff</strong> – Z-offset after the rotation</li>
+<li><strong>change_reference</strong> – If ‘x’ ‘y’ or ‘z’ change the final frame of reference (after all the rotations) to the convention opposite to the one indicating in reference. If ‘’ or False, nothing change.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="roteasy.src.roteasy_lib.rotation_matrix">
+<code class="descclassname">roteasy.src.roteasy_lib.</code><code class="descname">rotation_matrix</code><span class="sig-paren">(</span><em>angles=()</em>, <em>axes=’‘</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/src/roteasy_lib.html#rotation_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.src.roteasy_lib.rotation_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Core function to obtain the final rotation matrix <span class="math">\(R\)</span>.</p>
+<div class="math">
+\[R(\theta_1,\theta_2,....,\theta_N)=R_1(\theta_1) \cdot R_2(\theta_2) \cdot ..... \cdot R_N(\theta_N)\]</div>
+<p>where <span class="math">\(\theta_i\)</span> is the anticlockwise rotation angle around the axis <span class="math">\(x_i\)</span>
+e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">angles</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">=</span><span class="s">&#39;xyz&#39;</span>
+
+<span class="n">R</span><span class="o">=</span><span class="n">rotation_matrix</span><span class="p">(</span><span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case R is the rotation matrix representing a rotation of 30 degree around the
+x axis, then a rotation of 60 degree around the new y axis and finally a rotation of 80 degree
+around the final z axis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>angles</strong> – (anticlockwise) rotation angles (list, tuple or numpy array).</li>
+<li><strong>axes</strong> – str representing the rotation axes.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">final rotation matrix (see above).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="roteasy.src.roteasy_lib.rotation_matrix_x">
+<code class="descclassname">roteasy.src.roteasy_lib.</code><code class="descname">rotation_matrix_x</code><span class="sig-paren">(</span><em>angle</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/src/roteasy_lib.html#rotation_matrix_x"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.src.roteasy_lib.rotation_matrix_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the matrix that defines the anticlockwise rotation of a point around the x axis:</p>
+<div class="math">
+    \begin{bmatrix}
+        1       &amp; 0 &amp;  0 \\
+        0       &amp; \cos \theta  &amp; \sin \theta  \\
+        0      &amp; -\sin \theta &amp; \cos \theta
+    \end{bmatrix}</div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>angle</strong> – (anticlockwise) rotation angle ( <span class="math">\(\theta\)</span>) in degree</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a 3x3 numpy array containing the rotation matrix (see above).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="roteasy.src.roteasy_lib.rotation_matrix_y">
+<code class="descclassname">roteasy.src.roteasy_lib.</code><code class="descname">rotation_matrix_y</code><span class="sig-paren">(</span><em>angle</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/src/roteasy_lib.html#rotation_matrix_y"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.src.roteasy_lib.rotation_matrix_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the matrix that defines the anticlockwise rotation of a point around the y axis:</p>
+<div class="math">
+    \begin{bmatrix}
+        \cos \theta        &amp; 0 &amp;  -\sin \theta \\
+        0       &amp; 1  &amp; 0\\
+        \sin \theta      &amp; 0 &amp; \cos \theta
+    \end{bmatrix}</div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>angle</strong> – (anticlockwise) rotation angle ( <span class="math">\(\theta\)</span>) in degree</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a 3x3 numpy array containing the rotation matrix (see above).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="roteasy.src.roteasy_lib.rotation_matrix_z">
+<code class="descclassname">roteasy.src.roteasy_lib.</code><code class="descname">rotation_matrix_z</code><span class="sig-paren">(</span><em>angle</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roteasy/src/roteasy_lib.html#rotation_matrix_z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roteasy.src.roteasy_lib.rotation_matrix_z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the matrix that defines the anticlockwise rotation of a point around the z axis:</p>
+<div class="math">
+    \begin{bmatrix}
+        \cos \theta        &amp; \sin \theta &amp; 0 \\
+        -\sin \theta        &amp; \cos \theta  &amp; 0\\
+        0      &amp; 0 &amp; 1
+    \end{bmatrix}</div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>angle</strong> – (anticlockwise) rotation angle ( <span class="math">\(\theta\)</span>) in degree</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a 3x3 numpy array containing the rotation matrix (see above).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="example.html" class="btn btn-neutral" title="Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Giuliano Iorio.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

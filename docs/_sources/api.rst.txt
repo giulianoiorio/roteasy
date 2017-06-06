@@ -1,0 +1,21 @@
+roteasy package
+===============
+
+bla bla ciao ciao
+
+:mod:`main` Module
+-------------------------
+
+.. automodule:: roteasy.roteasy_main
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`lib` Module
+-------------------------
+
+.. automodule:: roteasy.src.roteasy_lib
+    :members:
+    :undoc-members:
+    :show-inheritance:
+

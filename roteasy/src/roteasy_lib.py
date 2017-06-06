@@ -94,6 +94,7 @@ def rotation_matrix_z(angle):
 
 dic_rot={'x':rotation_matrix_x,'y':rotation_matrix_y,'z':rotation_matrix_z}
 
+
 def rotation_matrix(angles=(),axes=''):
     """Core function to obtain the final rotation matrix :math:`R`.
 
@@ -137,6 +138,58 @@ def rotation_matrix(angles=(),axes=''):
 
     return R
 
+def rotate_core(cord,angles=(),axes='',unpacked=False,unpack=False,reference='r',xoff=0,yoff=0,zoff=0,change_reference=False):
+    """Rotate the point with coordinate 'cord' with an anticlokwise angle 'angles' around the axes 'axes'.
+    The function return the new rotated coordinates of the points.
+
+    :param cord: np.array (Nx3) or list with (x,y,z)
+    :param angles: List of (anticlockwise) angle of rotation.
+    :param axes: List of axes of rotation.
+    :param unpacked: If True, coord are on the form (x,y,z), if False cord are a Nx3 array with x in the 0-col, y 1-col and z 2-col
+    :param unpack: If True return the new cord in the form (xn,yn,zn), if False return the coord in a Nx3 array with x in the 0-col, y 1-col and z 2-col
+    :param reference: rh if the system is right-handed, lh if the system is left-handed.
+    :param xoff: X-offset after the rotation
+    :param yoff: Y-offset after the rotation
+    :param zoff: Z-offset after the rotation
+    :param change_reference: If 'x' 'y' or 'z' change the final frame of reference (after all the rotations) to the convention opposite to the one indicating in reference. If '' or False, nothing change.
+    :return:
+    """
+
+    if reference[0].lower()== 'r': cost2 = 1
+    elif reference[0].lower()== 'l':cost2 = -1
+    else: raise ValueError('Wrong frame formalism')
+
+
+
+    angles=np.array(angles)*cost2
+
+
+    cord=np.array(cord)
+
+    if unpacked: xo, yo, zo = cord
+    else: xo,yo,zo = cord.T
+
+
+
+    R=rotation_matrix(angles=angles,axes=axes)
+
+
+
+    xn = R[0,0]*xo + R[1,0]*yo + R[2,0]*zo - xoff
+    yn = R[0,1]*xo + R[1,1]*yo + R[2,1]*zo - yoff
+    zn = R[0,2]*xo + R[1,2]*yo + R[2,2]*zo - zoff
+
+    ret = [xn, yn, zn]
+
+    if (change_reference=='') or (change_reference==False): pass
+    elif change_reference=='x': ret[0]=-ret[0]
+    elif change_reference=='y': ret[1]=-ret[1]
+    elif change_reference=='z': ret[2]=-ret[2]
+    else: raise ValueError('Unknown axis %s for change reference'%(str(change_reference)))
+
+
+    if unpack: return ret
+    else: return np.array(ret).T
 
 
 
