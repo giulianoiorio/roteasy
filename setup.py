@@ -7,7 +7,7 @@ import numpy
 
 setup(
     name='roteas',
-    version='1.4.0',
+    version='1.4.1',
     author='Giuliano Iorio',
     author_email='giuliano.iorio@unibo.it',
     url='https://github.com/iogiul/roteasy.git',
