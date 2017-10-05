@@ -1,13 +1,13 @@
 from setuptools import setup
 import numpy
-
+import shutil
 
 
 
 
 setup(
-    name='roteas',
-    version='1.4.1',
+    name='roteasy',
+    version='1.6.0',
     author='Giuliano Iorio',
     author_email='giuliano.iorio@unibo.it',
     url='https://github.com/iogiul/roteasy.git',
@@ -16,3 +16,7 @@ setup(
     include_dirs=[numpy.get_include()]
 )
 
+
+shutil.rmtree('build')
+shutil.rmtree('dist')
+shutil.rmtree('roteasy.egg-info')

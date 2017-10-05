@@ -74,7 +74,7 @@ def align_frame(cord,pos_vec,ax='x',cartesian=True,spherical=False,cylindrical=F
         angles=(l*cost2,-b*cost2)
         axes='zy'
     elif ax=='-x':
-        angles=(l*cost2, (-b+180)*cost2 )
+        angles=(l*cost2, (-b+180)*cost2)
         axes='zy'
     elif ax=='y':
         angles=( (270+l)*cost2, b*cost2)
