@@ -17,6 +17,6 @@ setup(
 )
 
 
-shutil.rmtree('build')
-shutil.rmtree('dist')
-shutil.rmtree('roteasy.egg-info')
+#shutil.rmtree('build')
+#shutil.rmtree('dist')
+#shutil.rmtree('roteasy.egg-info')
